@@ -28,6 +28,8 @@ public class TEST2 {
             AssertJUnit.assertEquals(priceOnList, priceOnProduct);
         } catch (Exception e) {
             e.printStackTrace();
+        }finally {
+            driver.quit();
         }
     }
 }
