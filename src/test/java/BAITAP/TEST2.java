@@ -1,11 +1,12 @@
 package BAITAP;
 
 import driver.driverFactory;
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
+import org.apache.commons.io.FileUtils;
+import org.openqa.selenium.*;
 import org.testng.AssertJUnit;
 import org.testng.annotations.Test;
+
+import java.io.File;
 
 public class TEST2 {
     @Test
@@ -26,6 +27,8 @@ public class TEST2 {
             String priceOnProduct = driver.findElement(By.cssSelector(".price")).getText();
             //6. Compare Product value in list and details page should be equal ($100).
             AssertJUnit.assertEquals(priceOnList, priceOnProduct);
+            File screenshotFile = ((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
+            FileUtils.copyFile(screenshotFile, new File("C:\\Users\\tt\\Downloads\\New folder\\selenium-webdriver-java\\screenshot_test2.png"));
         } catch (Exception e) {
             e.printStackTrace();
         }finally {
