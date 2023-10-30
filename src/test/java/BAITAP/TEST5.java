@@ -1,17 +1,19 @@
 package BAITAP;
 import POM.RegisterPage;
 import driver.driverFactory;
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
+import org.apache.commons.io.FileUtils;
+import org.openqa.selenium.*;
 import org.testng.Assert;
 import org.testng.annotations.Test;
+
+import java.io.File;
+
 public class TEST5 {
     @Test
     public void Testcase05(){
         String firstName = "Ngan";
         String lastName = "Truong";
-        String email = "truongtuyetngan2407@gmail.com";
+        String email = "tuyetngan2407@gmail.com";
         String password = "123456";
         String confirmPassword = password;
 
@@ -71,7 +73,8 @@ public class TEST5 {
             // Step 9: Check wishlist is shared. Expected wishlist shared successfully.
             WebElement wishlistSharedMessage = driver.findElement(By.xpath("//span[normalize-space()='Your Wishlist has been shared.']"));
             Assert.assertEquals(wishlistSharedMessage.getText(),"Your Wishlist has been shared.");
-
+            File screenshotFile = ((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
+            FileUtils.copyFile(screenshotFile, new File("C:\\Users\\tt\\Downloads\\New folder\\selenium-webdriver-java\\screenshot_test5.png"));
         } catch (Exception e) {
             e.printStackTrace();
             Assert.fail("Test failed due to exception: " + e.getMessage());
