@@ -13,7 +13,7 @@ public class TEST5 {
     public void Testcase05(){
         String firstName = "Ngan";
         String lastName = "Truong";
-        String email = "tuyetngan2@gmail.com";
+        String email = "tuyetngan24@gmail.com";
         String password = "123456";
         String confirmPassword = password;
 
