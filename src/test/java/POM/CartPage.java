@@ -6,49 +6,37 @@ import org.openqa.selenium.support.ui.Select;
 public class CartPage {
     WebDriver driver;
 
-    By countryInput = By.id("country");
-    By regionInput = By.id("region_id");
-    By zipInput = By.id("postcode");
-    By estimateLink = By.xpath("//span[contains(text(),'Estimate')]");
-    By shippingCost = By.xpath(".//label[@for='s_method_flatrate_flatrate']");
-    By updateTotalButton = By.xpath("//button[@title='Update Total']");
-    By proceedToCheckoutButton = By.xpath("//li[@class='method-checkout-cart-methods-onepage-bottom']//button[@title='Proceed to Checkout']");
+    By countryField = By.id("country");
+
+    By stateOrProvinceField = By.id("region_id");
+
+    By zipField = By.id("postcode");
+
+    By estimateButton = By.cssSelector("button[title='Estimate']");
 
     public CartPage(WebDriver driver) {
         this.driver = driver;
     }
 
-    public void enterZip(String zip) {
-        WebElement zipElement = driver.findElement(zipInput);
-        zipElement.clear();
-        zipElement.sendKeys(zip);
-    }
-    public void selectCountry(String country) {
-        WebElement countryDropdown = driver.findElement(countryInput);
-        Select countryOption = new Select(countryDropdown);
-        countryOption.selectByValue(country);
+    public void enterCountry() {
+        WebElement country = driver.findElement(countryField);
+        Select countrySelect = new Select(country);
+        countrySelect.selectByVisibleText("United States");
     }
 
-    public void selectRegion(String region) {
-        WebElement regionDropdown = driver.findElement(regionInput);
-        Select regionOption = new Select(regionDropdown);
-        regionOption.selectByValue(region);
+    public void enterStateOrProvince() {
+        WebElement province = driver.findElement(stateOrProvinceField);
+        Select provinceSelect = new Select(province);
+        provinceSelect.selectByVisibleText("Georgia");
     }
 
-    public void clickEstimate() {
-        driver.findElement(estimateLink).click();
+    public void enterZipCode(String zip) {
+        WebElement zipCode = driver.findElement(zipField);
+        zipCode.clear();
+        zipCode.sendKeys(zip);
     }
 
-    public void selectShippingCost() {
-        WebElement shippingRadioButton = driver.findElement(shippingCost);
-        shippingRadioButton.click();
-    }
-
-    public void clickUpdateTotal() {
-        driver.findElement(updateTotalButton).click();
-    }
-
-    public void clickProceedToCheckout() {
-        driver.findElement(proceedToCheckoutButton).click();
+    public void clickEstimateButton() {
+        driver.findElement(estimateButton).click();
     }
 }

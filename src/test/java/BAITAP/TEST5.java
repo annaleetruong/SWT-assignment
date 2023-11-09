@@ -11,9 +11,9 @@ import java.io.File;
 public class TEST5 {
     @Test
     public void Testcase05(){
-        String firstName = "Ngan";
-        String lastName = "Truong";
-        String email = "tuyetngan24@gmail.com";
+        String firstName = "Vy";
+        String lastName = "Han";
+        String email = "hanvy3@gmail.com";
         String password = "123456";
         String confirmPassword = password;
 
